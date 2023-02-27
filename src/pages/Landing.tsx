@@ -1,7 +1,10 @@
 import React from 'react'
+import TextInput from '../components/TextInput'
 
 export default function Landing() {
   return (
-    <div>Landing</div>
+    <div className='font-roboto-mono'>
+        <TextInput placeholder='Example : mail@hosenur.dev'/>
+    </div>
   )
 }

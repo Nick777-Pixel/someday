@@ -5,7 +5,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: { "roboto-mono": ["Roboto Mono", "monospace"] },
+    },
   },
   plugins: [],
 }
