@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Button from "../components/Button";
-import TextInput from "../components/TextInput";
-import nhost from "../utils/nhost";
+import Button from "../../components/Button";
+import TextInput from "../../components/TextInput";
+import nhost from "../../utils/nhost";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
@@ -12,8 +12,8 @@ export default function Auth() {
     <div className="flex flex-row min-h-screen font-roboto-mono">
       <div className="w-3/5 bg-black"></div>
       <div className="w-2/5 flex items-center justify-center">
-        <div className="w-96 bg-slate-100 p-5 rounded">
-          <TextInput label="Email" placeholder="Example : mail@hosenur.dev" value={email} />
+        <div className="w-96 bg-[#EFEFEF] p-5 rounded">
+          <TextInput label="Email" placeholder="Example : mail@hosenur.dev" value={email} onChange={(e)=>setEmail(e.target.value)} />
           <Button text="Email Me A Magic Link 🎊"/>
         </div>
       </div>
