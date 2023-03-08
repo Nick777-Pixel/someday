@@ -1,9 +1,6 @@
 import React from "react";
-import { useUserData } from "@nhost/react";
 
 export default function Header() {
-  const user = useUserData();
-  console.log(user);
   return (
     <div className="navbar bg-base-100 max-w-4xl mx-auto font-quicksand h-[10vh]">
       <div className="flex-1">
@@ -49,7 +46,7 @@ export default function Header() {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src={user?.avatarUrl} />
+              {/* <img src={user?.avatarUrl} /> */}
             </div>
           </label>
           <ul

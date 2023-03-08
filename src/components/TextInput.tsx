@@ -21,6 +21,7 @@ export default function TextInput({
       {label && <label className="label">{label}</label>}
       <input
         type={type||"text"}
+        onChange={onChange}
         placeholder={placeholder}
         className={`input input-bordered input-primary w-full ${
           !full && "max-w-sm"
