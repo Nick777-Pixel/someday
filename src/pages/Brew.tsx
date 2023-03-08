@@ -24,16 +24,30 @@ export default function Brew() {
       <div className="form-control">
         <label className="label cursor-pointer">
           <span className="label-text">Send Anonymous Message</span>
-          <input type="checkbox" className="toggle" checked />
+          <input
+            type="checkbox"
+            className="toggle"
+            checked={message.anonymous}
+            onChange={(e) =>
+              setMessage({ ...message, anonymous: e.target.checked })
+            }
+          />
         </label>
       </div>
       <div className="form-control">
         <label className="label cursor-pointer">
           <span className="label-text">Notify Reciever Now</span>
-          <input type="checkbox" className="toggle" checked />
+          <input
+            type="checkbox"
+            className="toggle"
+            checked={message.notify}
+            onChange={(e) =>
+              setMessage({ ...message, notify: e.target.checked })
+            }
+          />
         </label>
       </div>
-      <Button text="Brew" full />
+      <Button text="Send To The Future 🚀" full />
     </div>
   );
 }
