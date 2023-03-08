@@ -11,14 +11,24 @@ export default function Brew() {
     notify: false,
   });
   return (
+    <div className="bg-base-200">
+
     <div className="font-quicksand max-w-4xl mx-auto p-4">
       <TextInput
         label="Reciever's Email Address"
         placeholder="Example : mail@hosenur.dev"
         full
-      />
+        />
+      <TextInput
+        type="date"
+        label="Select Message Delivery Date"
+        placeholder="Example : mail@hosenur.dev"
+        full
+        />
+      <label className="label">Message</label>
+
       <textarea
-        className="textarea textarea-primary w-full h-40"
+        className="textarea textarea-primary w-full h-40 my-2"
         placeholder="Message"
       ></textarea>
       <div className="form-control">
@@ -44,10 +54,11 @@ export default function Brew() {
             onChange={(e) =>
               setMessage({ ...message, notify: e.target.checked })
             }
-          />
+            />
         </label>
       </div>
       <Button text="Send To The Future 🚀" full />
     </div>
+            </div>
   );
 }

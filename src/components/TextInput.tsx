@@ -5,6 +5,7 @@ type Props = {
   label?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   full?: boolean;
+  type ?: string
 };
 
 export default function TextInput({
@@ -13,12 +14,13 @@ export default function TextInput({
   label,
   onChange,
   full,
+  type
 }: Props) {
   return (
     <div>
       {label && <label className="label">{label}</label>}
       <input
-        type="text"
+        type={type||"text"}
         placeholder={placeholder}
         className={`input input-bordered input-primary w-full ${
           !full && "max-w-sm"
