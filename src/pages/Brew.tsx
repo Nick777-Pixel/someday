@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 
 export default function Brew() {
+  const [message, setMessage] = useState({
+    to: "",
+    from: "",
+    message: "",
+    anonymous: false,
+    notify: false,
+  });
   return (
     <div className="font-quicksand max-w-4xl mx-auto p-4">
       <TextInput
