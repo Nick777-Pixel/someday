@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
-import nhost from "../utils/nhost";
+import nhost from "../utils/appwrite";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
