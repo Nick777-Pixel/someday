@@ -1,21 +1,28 @@
 import React from "react";
 type Props = {
   placeholder: string;
-  value: string;
-  label: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  label?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  full?: boolean;
 };
 
-export default function TextInput({ placeholder, value, label,onChange }: Props) {
+export default function TextInput({
+  placeholder,
+  value,
+  label,
+  onChange,
+  full,
+}: Props) {
   return (
-    <div className="my-2">
-      {label}
+    <div>
+      {label && <label className="label">{label}</label>}
       <input
         type="text"
-        value={value}
         placeholder={placeholder}
-        onChange={onChange}
-        className="p-2 w-full border rounded"
+        className={`input input-bordered input-primary w-full ${
+          !full && "max-w-sm"
+        } my-2`}
       />
     </div>
   );

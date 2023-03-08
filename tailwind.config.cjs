@@ -6,8 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: { "roboto-mono": ["Roboto Mono", "monospace"] },
+      fontFamily: { "quicksand": ["Quicksand", "sans-serif"] },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["lofi"]
+  }
 }

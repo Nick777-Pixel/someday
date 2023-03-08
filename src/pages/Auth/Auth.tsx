@@ -13,17 +13,15 @@ export default function Auth() {
     });
   };
   return (
-    <div className="flex flex-row min-h-screen font-roboto-mono">
-      <div className="w-3/5 bg-black"></div>
-      <div className="w-2/5 flex items-center justify-center">
-        <div className="w-96 bg-[#EFEFEF] p-5 rounded">
-          <TextInput
-            label="Email"
-            placeholder="Example : mail@hosenur.dev"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Button onClick={handleSubmit} text="Email Me A Magic Link 🎊" />
+    <div className="hero h-[90vh] font-quicksand bg-base-200">
+      <div className="hero-content text-center">
+        <div className="max-w-2xl ">
+          <h1 className="text-5xl font-bold uppercase">Get Started With SomeDay!!</h1>
+          <p className="py-6">
+            Send your love beyond time.  Whether you want to share your deepest thoughts, tell a future self about your achievements, or simply say 'I love you' to someone special, SomeDay is the perfect place to do it.
+          </p>
+          <TextInput placeholder="Example : mail@hosenur.dev"/>
+          <Button text="Get Started"/>
         </div>
       </div>
     </div>
