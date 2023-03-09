@@ -1,6 +1,5 @@
 const sdk = require("node-appwrite");
-const mailer = require("@sendgrid/mail");
-mailer.setApiKey(import.meta.env.VITE_SENDGRID_API_KEY)
+const mailer = require("sib-api-v3-sdk");
 /*
   'req' variable has:
     'headers' - object with request headers
@@ -15,6 +14,7 @@ mailer.setApiKey(import.meta.env.VITE_SENDGRID_API_KEY)
 */
 
 module.exports = async function (req, res) {
+  mailer.ApiClient.instance.authentications['api-key'].apiKey =  req.variables.SENDINBLUE
   const client = new sdk.Client();
 
   // You can remove services you don't use
@@ -42,12 +42,25 @@ module.exports = async function (req, res) {
       .setKey(req.variables["APPWRITE_FUNCTION_API_KEY"])
       .setSelfSigned(true);
   }
-  const message = {
-    to: "nur08439@gmail.com",
-    from: "mail@hosenur.tech",
-    subject: "You got a Someday message",
-    text: "You got a Someday message",
-  };
+  const message = `
+  <html>
+  <body>
+    <h1>Hi,</h1>
+    <p>Somebody just left you a message on <a>someday</a></p>
+    <p>Here is the message:</p>
+  </body>
+  </html>
+  `
+  new mailer.TransactionalEmailsApi().sendTransacEmail(
+    {
+      'subject':'You got a Someday message!',
+      'sender' : {'email':'mail@hosenur.tech', 'name':'someday'},
+      'replyTo' : {'email':'mail@hosenur.tech', 'name':'someday'},
+      'to' : [{'name': 'John Doe', 'email':'nur08439@gmail.com'}],
+      'htmlContent' : message,
+      'params' : {'bodyMessage':'Made just for you!'}
+    }
+  )
 
   res.json({
     areDevelopersAwesome: true,
