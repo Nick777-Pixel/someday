@@ -10,7 +10,7 @@ export default function Auth() {
   const handleSubmit = () => {
     console.log(email);
     const promise = account
-      .createMagicURLSession(ID.unique(), email, "http://localhost:5173/verify")
+      .createMagicURLSession(ID.unique(), email, "http://someday.shrooom.studio/verify")
       .then((response) => {
         navigate("/sent");
       });
