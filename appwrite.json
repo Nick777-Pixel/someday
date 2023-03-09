@@ -1,4 +1,21 @@
 {
     "projectId": "6408d275d925dcf6b8cf",
-    "projectName": "SOMEDAY"
+    "projectName": "SOMEDAY",
+    "functions": [
+        {
+            "$id": "640a10fd5cb440c2773b",
+            "name": "notify",
+            "runtime": "node-16.0",
+            "path": "functions/notify",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        }
+    ]
 }
