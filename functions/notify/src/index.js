@@ -1,5 +1,6 @@
 const sdk = require("node-appwrite");
-
+const mailer = require("@sendgrid/mail");
+mailer.setApiKey(import.meta.env.VITE_SENDGRID_API_KEY)
 /*
   'req' variable has:
     'headers' - object with request headers
@@ -28,17 +29,25 @@ module.exports = async function (req, res) {
   const users = new sdk.Users(client);
 
   if (
-    !req.variables['APPWRITE_FUNCTION_ENDPOINT'] ||
-    !req.variables['APPWRITE_FUNCTION_API_KEY']
+    !req.variables["APPWRITE_FUNCTION_ENDPOINT"] ||
+    !req.variables["APPWRITE_FUNCTION_API_KEY"]
   ) {
-    console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
+    console.warn(
+      "Environment variables are not set. Function cannot use Appwrite SDK."
+    );
   } else {
     client
-      .setEndpoint(req.variables['APPWRITE_FUNCTION_ENDPOINT'])
-      .setProject(req.variables['APPWRITE_FUNCTION_PROJECT_ID'])
-      .setKey(req.variables['APPWRITE_FUNCTION_API_KEY'])
+      .setEndpoint(req.variables["APPWRITE_FUNCTION_ENDPOINT"])
+      .setProject(req.variables["APPWRITE_FUNCTION_PROJECT_ID"])
+      .setKey(req.variables["APPWRITE_FUNCTION_API_KEY"])
       .setSelfSigned(true);
   }
+  const message = {
+    to: "nur08439@gmail.com",
+    from: "mail@hosenur.tech",
+    subject: "You got a Someday message",
+    text: "You got a Someday message",
+  };
 
   res.json({
     areDevelopersAwesome: true,

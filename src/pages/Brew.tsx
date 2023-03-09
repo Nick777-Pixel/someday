@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
-import client from "../utils/appwrite";
-import { Databases, ID } from "appwrite";
+import { Databases, ID, Functions } from "appwrite";
 import { toast,ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { database, functions } from "../utils/appwrite";
 
 
 export default function Brew() {
-  const database = new Databases(client);
   const navigate = useNavigate();
   const [message, setMessage] = useState({
     to: "",
@@ -28,6 +27,8 @@ export default function Brew() {
       message
     );
     if (promise) {
+      const promise = await functions.createExecution("640a10fd5cb440c2773b");
+
       toast("🦄 Message Scheduled!!!", {
         position: "top-right",
         autoClose: 5000,
@@ -42,7 +43,7 @@ export default function Brew() {
     }
   };
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 h-[90vh]">
       <ToastContainer/>
       <div className="font-quicksand max-w-4xl mx-auto p-4">
         <TextInput

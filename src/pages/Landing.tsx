@@ -3,13 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
-import client from "../utils/appwrite";
+import { account } from "../utils/appwrite";
 export default function Auth() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const handleSubmit = () => {
     console.log(email);
-    const account = new Account(client);
     const promise = account
       .createMagicURLSession(ID.unique(), email, "http://localhost:5173/verify")
       .then((response) => {
