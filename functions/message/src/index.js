@@ -39,8 +39,12 @@ module.exports = async function (req, res) {
       .setKey(req.variables['APPWRITE_FUNCTION_API_KEY'])
       .setSelfSigned(true);
   }
+  //get al messages where the date is of today
+  const messages = await database.listDocuments("640a097013200bf1a01d","640a09a58752e10bd4b1");
+  
+  
 
   res.json({
-    areDevelopersAwesome: true,
+    areDevelopersAwesome: messages,
   });
 };

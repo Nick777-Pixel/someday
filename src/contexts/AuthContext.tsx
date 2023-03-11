@@ -14,7 +14,9 @@ export function AuthProvider({ children }: any) {
       setCurrentUser(response);
     });
   }, []);
-  const value = {};
+  const value = {
+    currentUser,
+  };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

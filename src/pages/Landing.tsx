@@ -3,17 +3,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
+import { useAuth } from "../contexts/AuthContext";
 import { account } from "../utils/appwrite";
 export default function Auth() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const { currentUser }: any = useAuth();
   const handleSubmit = () => {
     console.log(email);
     const promise = account
-      .createMagicURLSession(ID.unique(), email, "http://someday.shrooom.studio/verify")
+      .createMagicURLSession(
+        ID.unique(),
+        email,
+        "http://someday.shrooom.studio/verify"
+      )
       .then((response) => {
         navigate("/sent");
       });
+  };
+  const handleNavigate = () => {
+    navigate("/brew");
   };
   return (
     <div className="hero h-[90vh] font-quicksand bg-base-200">
@@ -28,12 +37,17 @@ export default function Auth() {
             'I love you' to someone special, SomeDay is the perfect place to do
             it.
           </p>
-
-          <TextInput
-            placeholder="Example : mail@hosenur.dev"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Button onClick={handleSubmit} text="Get Started" />
+          {currentUser ? (
+            <Button onClick={handleNavigate} text="Write A Message 🪶" />
+          ) : (
+            <>
+              <TextInput
+                placeholder="Example : mail@hosenur.dev"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button onClick={handleSubmit} text="Get Started" />
+            </>
+          )}
         </div>
       </div>
     </div>
