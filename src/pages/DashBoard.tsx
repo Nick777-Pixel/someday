@@ -14,8 +14,7 @@ export default function DashBoard() {
       .then((response: any) => {
         setMessages(response.documents);
       });
-  }, []);
-  if (!currentUser) return null;
+  }, [currentUser]);
   return (
     <div className="max-w-4xl p-5 font-quicksand mx-auto">
       <h1 className="font-bold text-2xl">My Message History</h1>
