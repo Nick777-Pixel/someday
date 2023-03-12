@@ -1,4 +1,5 @@
-import { Route } from "react-router-dom";
+import { Route,redirect } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 export default function PrivateRoute() {
-  return <div>PrivateRoute</div>;
+  const { currentUser }: any = useAuth();
 }
