@@ -86,7 +86,7 @@ export default function Brew() {
         <TextInput
           type="email"
           label="Reciever's Email Address"
-          placeholder="Example : mail@hosenur.dev"
+          placeholder="Example : hide@seek.com"
           onChange={(e) => setMessage({ ...message, to: e.target.value })}
           full
         />
@@ -101,7 +101,7 @@ export default function Brew() {
 
         <textarea
           className="textarea textarea-primary w-full h-40 my-2"
-          placeholder="Message"
+          placeholder="Example : I love you with my soul, in case my mind forgets and my heart stops beating."
           onChange={(e) => setMessage({ ...message, message: e.target.value })}
         ></textarea>
         <div className="form-control">
