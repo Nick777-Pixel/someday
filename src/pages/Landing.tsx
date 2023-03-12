@@ -15,7 +15,7 @@ export default function Auth() {
       .createMagicURLSession(
         ID.unique(),
         email,
-        "http://someday.shrooom.studio/verify"
+        "https://someday.shrooom.studio/verify"
       )
       .then((response) => {
         navigate("/sent");
