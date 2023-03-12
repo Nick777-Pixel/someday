@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { account } from "../utils/appwrite";
 export default function Header() {
+  const {setCurrentUser}:any = useAuth();
+  const navigate = useNavigate();
   const logout = () => {
     account.deleteSession("current");
+    setCurrentUser(null);
+    navigate("/");
   };
   const { currentUser }:any = useAuth();
   return (

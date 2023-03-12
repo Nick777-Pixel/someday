@@ -10,14 +10,16 @@ export function AuthProvider({ children }: any) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const promise = account.get();
-    promise.then((response: any) => {
+    account.get().then((response: any) => {
       setCurrentUser(response);
+      setLoading(false);
+    }).catch((error) => {
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
   const value = {
     currentUser,
+    setCurrentUser,
   };
 
   return (
