@@ -13,12 +13,16 @@ export function AuthProvider({ children }: any) {
     const promise = account.get();
     promise.then((response: any) => {
       setCurrentUser(response);
-      setLoading(false);
     });
+    setLoading(false);
   }, []);
   const value = {
     currentUser,
   };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }
