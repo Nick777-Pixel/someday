@@ -59,7 +59,7 @@ export default function Header() {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://api.dicebear.com/5.x/bottts-neutral/svg" />
+              <img src={"https://api.dicebear.com/5.x/bottts-neutral/svg?seed="+currentUser.email} />
             </div>
           </label>
           <ul
