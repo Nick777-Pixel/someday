@@ -29,7 +29,7 @@ export default function Brew() {
   };
   const handleSubmit = async () => {
     if (!message.to || !message.message || !message.date) {
-      toast.error("⚠️ Please Fill All The Fields", {
+      toast.error("Please Fill All The Fields", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -42,7 +42,7 @@ export default function Brew() {
       return;
     }
     if (!verifyDate()) {
-      toast.error("📆 Date Should Be Atleast 1 Month From Now", {
+      toast.error("Date Should Be Atleast 1 Month From Now", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
