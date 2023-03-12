@@ -29,7 +29,7 @@ export default function Brew() {
   };
   const handleSubmit = async () => {
     if (!message.to || !message.message || !message.date) {
-      toast.error(" Please fill all the fields!!!", {
+      toast.error("⚠️ Please Fill All The Fields", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -42,7 +42,7 @@ export default function Brew() {
       return;
     }
     if (!verifyDate()) {
-      toast.error("Date should be atleast 1 month from now", {
+      toast.error("📆 Date Should Be Atleast 1 Month From Now", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -84,6 +84,7 @@ export default function Brew() {
       <ToastContainer />
       <div className="font-quicksand max-w-4xl mx-auto p-4">
         <TextInput
+          type="email"
           label="Reciever's Email Address"
           placeholder="Example : mail@hosenur.dev"
           onChange={(e) => setMessage({ ...message, to: e.target.value })}
