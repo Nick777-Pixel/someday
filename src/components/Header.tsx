@@ -1,12 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <div className="navbar bg-base-100 max-w-4xl mx-auto font-quicksand h-[10vh]">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">someday
-        
-        </a>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          someday
+        </Link>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
@@ -43,9 +43,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        {
-          
-        }
+        {}
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">

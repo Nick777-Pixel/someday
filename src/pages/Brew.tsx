@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import { Databases, ID, Functions } from "appwrite";
-import { toast,ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { database, functions } from "../utils/appwrite";
-
 
 export default function Brew() {
   const navigate = useNavigate();
@@ -17,6 +16,7 @@ export default function Brew() {
     anonymous: false,
     notify: false,
     date: "",
+    delivered: false,
   });
   const handleSubmit = async () => {
     console.log(message);
@@ -27,7 +27,9 @@ export default function Brew() {
       message
     );
     if (promise) {
-      const promise = await functions.createExecution("640a10fd5cb440c2773b");
+      if (message.notify) {
+        const promise = await functions.createExecution("640a10fd5cb440c2773b");
+      }
 
       toast("🦄 Message Scheduled!!!", {
         position: "top-right",
@@ -44,7 +46,7 @@ export default function Brew() {
   };
   return (
     <div className="bg-base-200 h-[90vh]">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="font-quicksand max-w-4xl mx-auto p-4">
         <TextInput
           label="Reciever's Email Address"

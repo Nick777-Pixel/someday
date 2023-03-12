@@ -8,15 +8,17 @@ export function useAuth() {
 
 export function AuthProvider({ children }: any) {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const promise = account.get();
     promise.then((response: any) => {
       setCurrentUser(response);
+      setLoading(false);
     });
   }, []);
   const value = {
     currentUser,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 }

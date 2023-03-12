@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { account } from "../utils/appwrite";
+import Lottie from "lottie-react";
+import anim from "../animations/heart.json";
 export default function Verify() {
   const [searchParams] = useSearchParams();
   const userId = searchParams.get("userId") as string;
@@ -17,5 +19,9 @@ export default function Verify() {
     }
   }, [userId, secret]);
 
-  return <div>Verify</div>;
+  return (
+    <div className="flex h-[90vh] items-center justify-center">
+      <Lottie style={{width:400}} animationData={anim} />
+    </div>
+  );
 }
