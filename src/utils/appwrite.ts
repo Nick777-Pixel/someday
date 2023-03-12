@@ -1,8 +1,9 @@
 import { Client,Databases,Functions,Account } from 'appwrite';
 const client = new Client();
+const ENDPOINT = import.meta.env.VITE_APPWRITE_ENDPOINT;
+const PROJECT = import.meta.env.VITE_APPWRITE_PROJECT;
 
-
-client.setEndpoint('https://appwrite.hosenur.tech/v1').setProject('6408d275d925dcf6b8cf');
+client.setEndpoint(ENDPOINT).setProject(PROJECT);
 const database = new Databases(client);
 const functions = new Functions(client);
 const account = new Account(client);
