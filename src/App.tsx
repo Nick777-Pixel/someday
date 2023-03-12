@@ -8,7 +8,6 @@ import Header from "./components/Header";
 import Brew from "./pages/Brew";
 import DashBoard from "./pages/DashBoard";
 import Verify from "./pages/Verify";
-import { ToastContainer } from "react-toastify";
 export default function App() {
   return (
     <AuthProvider>

@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { account } from "../utils/appwrite";
 export default function Header() {
+  const logout = () => {
+    account.deleteSession("current");
+  };
+  const { currentUser }:any = useAuth();
   return (
     <div className="navbar bg-base-100 max-w-4xl mx-auto font-quicksand h-[10vh]">
       <div className="flex-1">
@@ -8,6 +14,8 @@ export default function Header() {
           someday
         </Link>
       </div>
+      {
+        currentUser &&
       <div className="flex-none">
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -55,20 +63,17 @@ export default function Header() {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <Link to="/dashboard" className="justify-between">
+                DashBoard
+              </Link>
             </li>
             <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
+              <button onClick={logout}>Logout</button>
             </li>
           </ul>
         </div>
       </div>
+      }
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default function Brew() {
       message
     );
     if (promise) {
-      if (message.notify) {
+      if (message.notify && !message.anonymous) {
         const promise = await functions.createExecution("640a10fd5cb440c2773b");
       }
 
