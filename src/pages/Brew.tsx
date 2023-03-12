@@ -18,7 +18,42 @@ export default function Brew() {
     date: "",
     delivered: false,
   });
+  const verifyDate = () => {
+    const date = new Date(message.date);
+    const today = new Date();
+    //date should be atleast 1 month from now
+    if (date.getMonth() - today.getMonth() < 1) {
+      return false;
+    }
+    return true;
+  };
   const handleSubmit = async () => {
+    if (!message.to || !message.message || !message.date) {
+      toast.error(" Please fill all the fields!!!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    if (!verifyDate()) {
+      toast.error("Date should be atleast 1 month from now", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
     console.log(message);
     const promise = await database.createDocument(
       "640a097013200bf1a01d",
@@ -56,7 +91,7 @@ export default function Brew() {
         />
         <TextInput
           type="date"
-          label="Select Message Delivery Date"
+          label="Select Message Delivery Date (Atleast 1 month from now)"
           placeholder="Example : mail@hosenur.dev"
           onChange={(e) => setMessage({ ...message, date: e.target.value })}
           full
