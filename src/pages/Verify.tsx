@@ -11,7 +11,6 @@ export default function Verify() {
   const { setCurrentUser }:any = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(userId, secret);
     if (userId && secret) {
       const promise = account
         .updateMagicURLSession(userId, secret)
