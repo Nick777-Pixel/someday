@@ -6,12 +6,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { database, functions } from "../utils/appwrite";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Brew() {
+  const { currentUser }: any = useAuth();
   const navigate = useNavigate();
   const [message, setMessage] = useState({
     to: "",
-    from: "nur08439@gmail.com",
+    from: currentUser.email,
     message: "",
     anonymous: false,
     notify: false,
